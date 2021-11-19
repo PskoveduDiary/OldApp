@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Эл. Дневник</string>
+    <string name="app_developer">AdlemGames</string>
+    <string name="navigation_drawer_open">Открыть меню</string>
+    <string name="navigation_drawer_close">Закрыть меню</string>
+    <string name="nav_header_title"></string>
+    <string name="nav_header_subtitle"></string>
+    <string name="nav_header_desc"></string>
+
+    <string name="menu_home">Дневник</string>
+    <string name="menu_shedule">Расписание</string>
+    <string name="menu_services">Услуги</string>
+    <string name="menu_TFind">Найти учителя</string>
+    <string name="menu_messages">Сообщения</string>
+    <string name="action_Logout">Выйти</string>
+    <string name="Diary">https://one.pskovedu.ru/edv/index/participant</string>
+    <string name="Shedule">https://one.pskovedu.ru/schedule/index/current</string>
+    <string name="Services">https://one.pskovedu.ru/esm/index</string>
+    <string name="TFind">https://one.pskovedu.ru/schedule/index</string>
+
+
+</resources>

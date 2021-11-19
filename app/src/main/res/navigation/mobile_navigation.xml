@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.Alex.diary.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_shedule"
+        android:name="com.Alex.diary.ui.shedule.shedule"
+        android:label="@string/menu_shedule"
+        tools:layout="@layout/fragment_shedule" />
+
+    <fragment
+        android:id="@+id/nav_services"
+        android:name="com.Alex.diary.ui.services.services"
+        android:label="@string/menu_services"
+        tools:layout="@layout/fragment_services" />
+    <fragment
+        android:id="@+id/nav_teachers"
+        android:name="com.Alex.diary.ui.finder.find"
+        android:label="@string/menu_TFind"
+        tools:layout="@layout/fragment_teachers" />
+    <fragment
+        android:id="@+id/nav_messages"
+        android:name="com.Alex.diary.ui.messages.messages"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/fragment_messages" />
+</navigation>
