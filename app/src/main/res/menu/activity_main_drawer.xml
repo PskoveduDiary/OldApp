@@ -16,17 +16,21 @@
             android:id="@+id/nav_services"
             android:icon="@drawable/ic_new_services"
             android:title="@string/menu_services" />
-    </group>
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_teachers"
             android:icon="@drawable/ic_new_teachers"
             android:title="@string/menu_TFind"/>
-    </group>
-    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/ic_new_teachers"
             android:title="@string/menu_messages"/>
+        <item android:title="">
+            <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/ic_menu_share"
+                    android:title="@string/action_Logout"/>
+            </menu>
+        </item>
     </group>
 </menu>
