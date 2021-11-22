@@ -14,14 +14,14 @@ public class MyWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
 
-        Log.d("WebClient", request.getUrl().toString());
+        //Log.d("WebClient", request.getUrl().toString());
         if (request.getUrl().toString().equals("https://one.pskovedu.ru/edv/index/error/access_denied")){
-            HomeFragment.Login();
-            Log.d("WebClient", "Login!");
+            HomeFragment.Login(); //To login, because access denied
+            //Log.d("WebClient", "Login!");
         }
         else if (request.getUrl().toString().equals("https://one.pskovedu.ru/")) {
-            Log.d("WebClient", "Diary!");
-            HomeFragment.Pass();
+            //Log.d("WebClient", "Diary!");
+            HomeFragment.Pass(); //Logged, to diary!
         } else{
             view.loadUrl(request.getUrl().toString());
 
@@ -29,13 +29,17 @@ public class MyWebViewClient extends WebViewClient {
         return true;
     }
 
-    // Для старых устройств
+    // For old devices
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
         if (url.equals("https://one.pskovedu.ru/edv/index/error/access_denied")){
             HomeFragment.Login();
-            Log.d("WebClient", "Login!");
+            //Log.d("WebClient", "Login!");
+        }
+        else if (url.equals("https://one.pskovedu.ru/")) {
+            //Log.d("WebClient", "Diary!");
+            HomeFragment.Pass(); //Logged, to diary!
         }
         else{
             view.loadUrl(url);
