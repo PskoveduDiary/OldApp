@@ -8,6 +8,9 @@ import android.view.Menu;
 import com.Alex.diary.ui.home.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,9 +19,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,42 +37,44 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_home, R.id.nav_shedule, R.id.nav_services, R.id.nav_teachers, R.id.nav_messages)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     public void onBackPressed() {
         HomeFragment.Login();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
         if(HomeFragment.webView.canGoBack()) {
             HomeFragment.webView.goBack();
         } else {
             super.onBackPressed();
         }
+        }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+        @SuppressWarnings("StatementWithEmptyBody")
+        @Override
+        public boolean onNavigationItemSelected(MenuItem item) {
+            // Handle navigation view item clicks here.
+            int id = item.getItemId();
+            if (id == R.id.action_Logout) {
+                navController.navigate(R.id.nav_home);
+                HomeFragment.Logout();
+            }
+            else navController.navigate(id);
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-                || super.onSupportNavigateUp();
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
+        }
     }
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-                switch(id){
-                    case R.id.action_Logout :
-                        HomeFragment.Logout();
-                        return true;
-                }
-        //headerView.setText(item.getTitle());
-        return super.onOptionsItemSelected(item);
-    }
-}
 

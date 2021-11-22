@@ -43,6 +43,7 @@ public class MyWebViewClient extends WebViewClient {
             //Log.d("WebClient", "Diary!");
             HomeFragment.Pass(); //Logged, to diary!
         }
+        else if (request.isRedirect())
         else if (request.getUrl().toString().equals("https://one.pskovedu.ru/schedule/index/error/access_denied")) {
             //Log.d("WebClient", "Error!");
             view.loadData(Error, "text/html; charset=UTF-8", null); //Logged, but user is parent or Not logged

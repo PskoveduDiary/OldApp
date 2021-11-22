@@ -10,13 +10,11 @@
         android:name="com.Alex.diary.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/nav_shedule"
         android:name="com.Alex.diary.ui.shedule.shedule"
         android:label="@string/menu_shedule"
         tools:layout="@layout/fragment_shedule" />
-
     <fragment
         android:id="@+id/nav_services"
         android:name="com.Alex.diary.ui.services.services"
