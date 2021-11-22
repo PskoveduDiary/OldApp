@@ -31,9 +31,9 @@ public class HomeFragment extends Fragment {
         webView = (WebView) view.findViewById(R.id.webViewHome);
         webView.setWebViewClient(new MyWebViewClient());
         diary = getString(R.string.Diary);
-        webView.loadUrl(diary);
+        webView.loadUrl(diary); //load Diary
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.getSettings().setDomStorageEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);//Diary Requires DOM
         return view;
     }
     public static void Login(){
@@ -43,11 +43,11 @@ public class HomeFragment extends Fragment {
         webView.loadUrl("https://one.pskovedu.ru/auth/logout");
     }
     public static void Pass(){
-        webView.loadUrl("https://one.pskovedu.ru");
+        webView.loadUrl("https://one.pskovedu.ru");//For login
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                webView.loadUrl(diary);
+                webView.loadUrl(diary);//Return to diary
                 }
             }, 1500); //specify the number of milliseconds
         }

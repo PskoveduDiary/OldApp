@@ -29,7 +29,7 @@ public class messages extends Fragment {
                     webView.evaluateJavascript("document.getElementById(\"button-1086\").style.display = 'none'", null); //hide groups button
                     webView.evaluateJavascript("document.getElementById(\"tool-1089-toolEl\").click()", null); //on full screen
                     webView.evaluateJavascript("document.getElementById(\"tool-1090\").style.display = 'none'", null); // hide head button
-                    //webView.evaluateJavascript("document.getElementById(\"messaging\").style=\"top: 15px;\";", null);//move window to up(today not work)
+                    //webView.evaluateJavascript("document.getElementById(\"messaging\").style=\"top: 20px;\";", null);//move window to up(today not work)
 
                 }
             });

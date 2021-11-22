@@ -23,10 +23,10 @@
             android:icon="@drawable/ic_new_teachers"
             android:title="@string/menu_TFind"/>
     </group>
-    <!--<group android:checkableBehavior="single">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/ic_new_teachers"
             android:title="@string/menu_messages"/>
-    </group>-->
+    </group>
 </menu>
