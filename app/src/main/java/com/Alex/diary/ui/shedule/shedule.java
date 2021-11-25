@@ -21,20 +21,20 @@ public class shedule extends Fragment {
         public static WebView webView;
         public  View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
             View view = inflater.inflate(R.layout.fragment_shedule, vg, false);
+            webView = view.findViewById(R.id.webViewShedule);
+            webView.setWebViewClient(new MyWebViewClient());
             switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
                 case Configuration.UI_MODE_NIGHT_YES:
-                    if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
-                        WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
-                    }
-                    break;
+                if(WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK))
+                {
+                    WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
+                }
+                break;
                 case Configuration.UI_MODE_NIGHT_NO:
-                    // process
-                    break;
+                break;
             } //Dark theme
-            webView = (WebView) view.findViewById(R.id.webViewShedule);
-            webView.setWebViewClient(new MyWebViewClient());
-        webView.loadUrl(getString(R.string.Shedule));
-        webView.getSettings().setJavaScriptEnabled(true);
-        return view;
+            webView.loadUrl(getString(R.string.Shedule));
+            webView.getSettings().setJavaScriptEnabled(true);
+            return view;
         }
         }
