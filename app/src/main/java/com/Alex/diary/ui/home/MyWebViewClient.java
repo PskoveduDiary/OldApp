@@ -2,17 +2,23 @@ package com.Alex.diary.ui.home;
 
 import android.annotation.TargetApi;
 import com.Alex.diary.ui.home.HomeFragment;
+
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 import android.util.LogPrinter;
+import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import androidx.annotation.NonNull;
 
 public class MyWebViewClient extends WebViewClient {
     @TargetApi(Build.VERSION_CODES.N)
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+
         String Error = "\n" +
                 "<!doctype html>\n" +
                 "<html>\n" +
@@ -43,9 +49,11 @@ public class MyWebViewClient extends WebViewClient {
             //Log.d("WebClient", "Diary!");
             HomeFragment.Pass(); //Logged, to diary!
         }
-        else if (request.isRedirect())
         else if (request.getUrl().toString().equals("https://one.pskovedu.ru/schedule/index/error/access_denied")) {
             //Log.d("WebClient", "Error!");
+            view.loadData(Error, "text/html; charset=UTF-8", null); //Logged, but user is parent or Not logged
+        }
+        else if(request.isRedirect() && view.getUrl().equals("https://one.pskovedu.ru/#messaging")){
             view.loadData(Error, "text/html; charset=UTF-8", null); //Logged, but user is parent or Not logged
         }
         else{
