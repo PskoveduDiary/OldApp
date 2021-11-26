@@ -1,10 +1,16 @@
 package com.Alex.diary.ui.home;
 
 import android.annotation.TargetApi;
+
+import com.Alex.diary.MainActivity;
 import com.Alex.diary.ui.home.HomeFragment;
 
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.util.Log;
 import android.util.LogPrinter;
 import android.view.View;
@@ -13,6 +19,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
+
+import static android.os.Environment.DIRECTORY_DOCUMENTS;
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
 public class MyWebViewClient extends WebViewClient {
     @TargetApi(Build.VERSION_CODES.N)
@@ -56,8 +65,13 @@ public class MyWebViewClient extends WebViewClient {
         else if(request.isRedirect() && view.getUrl().equals("https://one.pskovedu.ru/#messaging")){
             view.loadData(Error, "text/html; charset=UTF-8", null); //Logged, but user is parent or Not logged
         }
+        else if(view.getUrl().contains(".xml"))
+        {
+            view.getContext().startActivity(
+                    new Intent(Intent.ACTION_VIEW, Uri.parse(request.getUrl().toString())));
+        }
         else{
-            view.loadUrl(request.getUrl().toString());
+                    view.loadUrl(request.getUrl().toString());
 
         }
         return true;

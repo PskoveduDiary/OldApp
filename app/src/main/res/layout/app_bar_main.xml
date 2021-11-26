@@ -8,16 +8,15 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="30dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
+        android:background="#0000"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="#FFFFFF"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

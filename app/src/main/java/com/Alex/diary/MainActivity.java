@@ -1,5 +1,7 @@
 package com.Alex.diary;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     NavController navController;
+    public static DownloadManager dservice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         //getSupportActionBar().hide();
+        dservice =(DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
     }
 
     public void onBackPressed() {
