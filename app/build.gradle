@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "com.Alex.diary"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
-        versionCode 6
-        versionName "1.2"
+        versionCode 17
+        versionName "1.2test8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -19,6 +19,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

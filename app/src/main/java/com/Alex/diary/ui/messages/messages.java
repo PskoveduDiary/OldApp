@@ -1,7 +1,7 @@
 package com.Alex.diary.ui.messages;
 
+import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,14 +14,21 @@ import androidx.fragment.app.Fragment;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
+import com.Alex.diary.PurshaseCore;
 import com.Alex.diary.R;
 import com.Alex.diary.ui.home.MyWebViewClient;
 
 
 
 public class messages extends Fragment {
+        public PurshaseCore pc = new PurshaseCore();
         public static WebView webView;
         public  View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
+            if(!pc.Check(this.getContext()))
+            {
+                Intent intent = new Intent(getActivity(), PurshaseCore.class);
+                startActivity(intent);
+            }
             View view = inflater.inflate(R.layout.fragment_messages, vg, false);
             webView = (WebView) view.findViewById(R.id.webViewMsg);
             webView.setWebViewClient(new MyWebViewClient() {

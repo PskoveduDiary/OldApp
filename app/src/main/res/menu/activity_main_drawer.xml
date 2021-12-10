@@ -24,8 +24,13 @@
             android:id="@+id/nav_messages"
             android:icon="@drawable/ic_menu_send"
             android:title="@string/menu_messages"/>
+
         <item android:title="">
             <menu>
+                <item
+                    android:id="@+id/nav_premium"
+                    android:icon="@drawable/ic_premium"
+                    android:title="Премиум"/>
                 <item
                     android:id="@+id/action_Logout"
                     android:icon="@drawable/ic_new_logout"

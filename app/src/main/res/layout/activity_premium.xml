@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1FBEEF"
+    tools:context=".PurshaseCore"
+    tools:ignore="HardcodedText, ContentDescription"
+    >
+
+    <ImageView
+        android:id="@+id/exit"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="Закрыть"
+        android:src="@drawable/exit"
+        app:layout_constraintBottom_toTopOf="@+id/itemTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.042"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/itemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subscription_period_prompt"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/yearSub"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <Button
+        android:id="@+id/yearSub"
+        android:layout_width="133dp"
+        android:layout_height="207dp"
+        android:background="@drawable/mounth"
+        android:text=""
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <ImageView
+        android:id="@+id/outline"
+        android:layout_width="138dp"
+        android:layout_height="227dp"
+        android:src="@drawable/sale"
+        app:layout_constraintBottom_toTopOf="@+id/Accept"
+        app:layout_constraintEnd_toEndOf="@+id/yearSub"
+        app:layout_constraintStart_toStartOf="@+id/yearSub"
+        app:layout_constraintTop_toBottomOf="@+id/itemTitle"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <ImageView
+        android:id="@+id/selectYear"
+        android:layout_width="42dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="96dp"
+        android:elevation="11dp"
+        android:src="@drawable/ic_set"
+        app:layout_constraintBottom_toTopOf="@+id/yearSub"
+        app:layout_constraintStart_toStartOf="@+id/sale"
+        android:visibility="visible"/>
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="133dp"
+        android:layout_height="25dp"
+        android:elevation="10dp"
+        android:src="#4D67AC"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSub"
+        app:layout_constraintEnd_toEndOf="@+id/outline"
+        app:layout_constraintStart_toStartOf="@+id/outline"
+        app:layout_constraintTop_toTopOf="@+id/outline"
+        app:layout_constraintVertical_bias="0.06999999" />
+
+    <TextView
+        android:id="@+id/sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:elevation="10dp"
+        android:text="@string/sale_prompt"
+        android:textColor="#F8F8F8"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/header"
+        app:layout_constraintEnd_toEndOf="@+id/header"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/header"
+        app:layout_constraintTop_toTopOf="@+id/outline" />
+
+    <TextView
+        android:id="@+id/num12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="11dp"
+        android:text="12"
+        android:textAlignment="center"
+        android:textColor="#5274FA"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/yearText"
+        app:layout_constraintEnd_toEndOf="@+id/outline"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/outline"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/yearText"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="88dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="месяцев"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#2B2B2B"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/yearSub"
+        app:layout_constraintStart_toStartOf="@+id/yearSub"
+        app:layout_constraintTop_toTopOf="@+id/yearSub" />
+
+    <ImageView
+        android:id="@+id/separator"
+        android:layout_width="133dp"
+        android:layout_height="2dp"
+        android:elevation="11dp"
+        android:src="#BCBCBC"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSub"
+        app:layout_constraintEnd_toEndOf="@+id/yearSub"
+        app:layout_constraintStart_toStartOf="@+id/yearSub"
+        app:layout_constraintTop_toBottomOf="@+id/num12"
+        app:layout_constraintVertical_bias="0.34" />
+
+    <TextView
+        android:id="@+id/oldsum"
+        android:layout_width="122dp"
+        android:layout_height="15dp"
+        android:elevation="11dp"
+        android:text="@string/oldsum"
+        android:textAlignment="center"
+        android:textColor="#808080"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/sum"
+        app:layout_constraintEnd_toEndOf="@+id/yearSub"
+        app:layout_constraintStart_toStartOf="@+id/yearSub"
+        app:layout_constraintTop_toTopOf="@+id/separator"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/sum"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="149,00 ₽\n в год"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#5274FA"
+        app:layout_constraintBottom_toBottomOf="@+id/yearSub"
+        app:layout_constraintEnd_toEndOf="@+id/yearSub"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/yearSub"
+        app:layout_constraintTop_toTopOf="@+id/separator"
+        app:layout_constraintVertical_bias="0.416" />
+
+    <Button
+        android:id="@+id/monthSub"
+        android:layout_width="108dp"
+        android:layout_height="180dp"
+        android:background="@drawable/optional"
+        android:text=""
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/yearSub"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
+
+    <ImageView
+        android:id="@+id/shadow1"
+        android:layout_width="108dp"
+        android:layout_height="180dp"
+        android:src="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/Accept"
+        app:layout_constraintEnd_toEndOf="@+id/monthSub"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/monthSub"
+        app:layout_constraintTop_toTopOf="@+id/monthSub"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <ImageView
+        android:id="@+id/selectmonth"
+        android:layout_width="42dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="156dp"
+        android:elevation="11dp"
+        android:src="@drawable/ic_set"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSub"
+        app:layout_constraintStart_toStartOf="@+id/monthSub"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/num1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="11dp"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="#5274FA"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSub"
+        app:layout_constraintEnd_toEndOf="@+id/shadow1"
+        app:layout_constraintStart_toStartOf="@+id/shadow1"
+        app:layout_constraintTop_toTopOf="@+id/monthSub"
+        app:layout_constraintVertical_bias="0.100000024" />
+
+    <TextView
+        android:id="@+id/monthText"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="месяц"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#5274FA"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSub"
+        app:layout_constraintEnd_toEndOf="@+id/monthSub"
+        app:layout_constraintStart_toStartOf="@+id/monthSub"
+        app:layout_constraintTop_toBottomOf="@+id/num1"
+        app:layout_constraintVertical_bias="0.18" />
+
+    <ImageView
+        android:id="@+id/separator2"
+        android:layout_width="108dp"
+        android:layout_height="2dp"
+        android:elevation="11dp"
+        android:src="#BCBCBC"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSub"
+        app:layout_constraintEnd_toEndOf="@+id/monthSub"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/monthSub"
+        app:layout_constraintTop_toBottomOf="@+id/num12"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <TextView
+        android:id="@+id/sumMonth"
+        android:layout_width="108dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="20,00 ₽\n в месяц"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#5274FA"
+        app:layout_constraintBottom_toBottomOf="@+id/monthSub"
+        app:layout_constraintEnd_toEndOf="@+id/monthSub"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/monthSub"
+        app:layout_constraintTop_toTopOf="@+id/separator2"
+        app:layout_constraintVertical_bias="0.351" />
+
+    <Button
+        android:id="@+id/lifeSub"
+        android:layout_width="108dp"
+        android:layout_height="180dp"
+        android:background="@drawable/optional"
+        android:text=""
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yearSub"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
+
+    <ImageView
+        android:id="@+id/shadow2"
+        android:layout_width="108dp"
+        android:layout_height="180dp"
+        android:src="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/Accept"
+        app:layout_constraintEnd_toEndOf="@+id/lifeSub"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lifeSub"
+        app:layout_constraintTop_toTopOf="@+id/lifeSub"
+        app:layout_constraintVertical_bias="0.016" />
+
+    <ImageView
+        android:id="@+id/selectlife"
+        android:layout_width="42dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="160dp"
+        android:elevation="11dp"
+        android:src="@drawable/ic_set"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow2"
+        app:layout_constraintStart_toStartOf="@+id/lifeSub"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/lifeText"
+        android:layout_width="131dp"
+        android:layout_height="32dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="Навсегда"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#5274FA"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lifeSub"
+        app:layout_constraintEnd_toEndOf="@+id/lifeSub"
+        app:layout_constraintStart_toStartOf="@+id/lifeSub"
+        app:layout_constraintTop_toTopOf="@+id/lifeSub"
+        app:layout_constraintVertical_bias="0.38" />
+
+    <ImageView
+        android:id="@+id/separator3"
+        android:layout_width="108dp"
+        android:layout_height="2dp"
+        android:elevation="11dp"
+        android:src="#BCBCBC"
+        app:layout_constraintBottom_toBottomOf="@+id/lifeSub"
+        app:layout_constraintEnd_toEndOf="@+id/lifeSub"
+        app:layout_constraintStart_toStartOf="@+id/lifeSub"
+        app:layout_constraintTop_toBottomOf="@+id/lifeText"
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <TextView
+        android:id="@+id/sumlife"
+        android:layout_width="108dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:elevation="11dp"
+        android:fontFamily="sans-serif"
+        android:text="499,00 ₽"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#5274FA"
+        app:layout_constraintBottom_toBottomOf="@+id/lifeSub"
+        app:layout_constraintEnd_toEndOf="@+id/lifeSub"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/lifeSub"
+        app:layout_constraintTop_toTopOf="@+id/separator3"
+        app:layout_constraintVertical_bias="0.351" />
+
+    <TextView
+        android:id="@+id/cancel"
+        android:layout_width="326dp"
+        android:layout_height="65dp"
+        android:text="@string/cancelSub"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/Accept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/outline"
+        app:layout_constraintVertical_bias="0.614" />
+
+    <Button
+        android:id="@+id/Accept"
+        android:layout_width="368dp"
+        android:layout_height="94dp"
+        android:background="@drawable/mounth"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yearSub"
+        app:layout_constraintVertical_bias="0.896" />
+
+    <TextView
+        android:id="@+id/acceptText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="11dp"
+        android:text="Нажмите чтобы продолжить"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Accept"
+        app:layout_constraintEnd_toEndOf="@+id/Accept"
+        app:layout_constraintStart_toStartOf="@+id/Accept"
+        app:layout_constraintTop_toTopOf="@+id/Accept" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

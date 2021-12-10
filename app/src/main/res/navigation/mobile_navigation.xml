@@ -30,4 +30,9 @@
         android:name="com.Alex.diary.ui.messages.messages"
         android:label="@string/menu_messages"
         tools:layout="@layout/fragment_messages" />
+    <activity
+        android:id="@+id/nav_premium"
+        android:name="com.Alex.diary.PurshaseCore"
+        android:label="@string/menu_messages"
+        tools:layout="@layout/activity_premium" />
 </navigation>

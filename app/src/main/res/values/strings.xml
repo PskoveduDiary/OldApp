@@ -17,6 +17,18 @@
     <string name="Shedule">https://one.pskovedu.ru/schedule/index/current</string>
     <string name="Services">https://one.pskovedu.ru/esm/index</string>
     <string name="TFind">https://one.pskovedu.ru/schedule/index</string>
+    <string name="Subscription">Премиум</string>
+    <string name="subscription_period_monthly">1 месяц</string>
+    <string name="subscription_period_threemonth">3 месяца</string>
+    <string name="subscription_period_sixmonth">Полгода</string>
+    <string name="subscription_period_yearly">месяцев</string>
+    <string name="subscription_period_prompt">Выберите план после истечения 30-ти дневного пробного периода</string>
+    <string name="subscription_resignup_prompt">Продлить подписку на выбранный период</string>
+    <string name="sale_prompt">Скидка 20%</string>
+    <string name="oldsum"><strike>249,00 ₽</strike></string>
+    <string name="subscription_prompt_continue">Продолжить</string>
+    <string name="subscription_prompt_cancel">Отмена</string>
+    <string name="cancelSub">"Можно отменить в любой момент в <link>Google Play</link></string>
 
 
 </resources>
