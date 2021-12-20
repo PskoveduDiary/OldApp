@@ -1,19 +1,25 @@
 package com.Alex.diary.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import androidx.fragment.app.Fragment;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
+import com.Alex.diary.MainActivity;
 import com.Alex.diary.R;
 import com.Alex.diary.XLSParser;
 
@@ -23,10 +29,12 @@ public class HomeFragment extends Fragment {
     public static String diary;
     public static String Url;
     static String cookies;
+    static Context contextt;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
         View view = inflater.inflate(R.layout.fragment_home, vg, false);
         webView = (WebView) view.findViewById(R.id.webViewHome);
+        contextt = getActivity().getBaseContext();
         switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
             case Configuration.UI_MODE_NIGHT_YES:
                 if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
@@ -41,19 +49,23 @@ public class HomeFragment extends Fragment {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                cookies = CookieManager.getInstance().getCookie(view.getUrl());
+                cookies = CookieManager.getInstance().getCookie(url);
                 // save cookies or call new fun to handle actions
                 //  newCookies(cookies);
+                //webView.loadUrl("javascript:alert(DataControl.getGuid())");
+
             }
+
             @Override
             public void Download(String url){
-                    Intent switchActivityIntent = new Intent(getContext(), XLSParser.class);
+                    Intent switchActivityIntent = new Intent(contextt, XLSParser.class);
                     switchActivityIntent.putExtra("gfjxsasd", cookies); //like obfuscation
                     switchActivityIntent.putExtra("djhjgfj", url); //too like obfuscation
                     startActivity(switchActivityIntent);
             }
         });
-        diary = getString(R.string.Diary);
+        webView.setWebChromeClient(new MyWebChromeClient());
+        diary = "https://one.pskovedu.ru/edv/index/participant";
 
         webView.loadUrl(diary); //load Diary
         webView.getSettings().setJavaScriptEnabled(true);
@@ -77,5 +89,19 @@ public class HomeFragment extends Fragment {
                 webView.loadUrl(diary);//Return to diary
             }
         }, 1500); //specify the number of milliseconds
+    }
+}
+final class MyWebChromeClient extends WebChromeClient {
+    @Override
+    public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+        Log.d("LogTag", message);
+        result.confirm();
+        SharedPreferences sharedPref = new MainActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("PrivateID", message);
+        editor.apply();
+
+        Log.d("prefs", message);
+        return true;
     }
 }

@@ -74,15 +74,15 @@
 
     <ImageView
         android:id="@+id/header"
-        android:layout_width="133dp"
-        android:layout_height="25dp"
+        android:layout_width="134dp"
+        android:layout_height="35dp"
         android:elevation="10dp"
         android:src="#4D67AC"
         app:layout_constraintBottom_toBottomOf="@+id/yearSub"
         app:layout_constraintEnd_toEndOf="@+id/outline"
         app:layout_constraintStart_toStartOf="@+id/outline"
         app:layout_constraintTop_toTopOf="@+id/outline"
-        app:layout_constraintVertical_bias="0.06999999" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
         android:id="@+id/sale"
@@ -95,7 +95,6 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="@+id/header"
         app:layout_constraintTop_toTopOf="@+id/outline" />
 

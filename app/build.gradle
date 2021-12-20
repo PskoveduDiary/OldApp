@@ -6,10 +6,11 @@ android {
 
     defaultConfig {
         applicationId "com.Alex.diary"
-        minSdkVersion 21
+        minSdkVersion 16
+        multiDexEnabled true
         targetSdkVersion 31
-        versionCode 18
-        versionName "1.2test9"
+        versionCode 21
+        versionName "1.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +41,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
+    implementation files('src\\main\\libs\\poi-3.12-android-a.jar')
+    implementation files('src\\main\\libs\\poi-ooxml-schemas-3.12-20150511-a.jar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

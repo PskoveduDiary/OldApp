@@ -24,7 +24,8 @@ public class messages extends Fragment {
         public PurshaseCore pc = new PurshaseCore();
         public static WebView webView;
         public  View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
-            if(!pc.Check(this.getContext()))
+
+            if(!pc.Check(this.getContext()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
                 Intent intent = new Intent(getActivity(), PurshaseCore.class);
                 startActivity(intent);
@@ -34,7 +35,7 @@ public class messages extends Fragment {
             webView.setWebViewClient(new MyWebViewClient() {
                 @Override
                 public void onPageFinished(WebView view, String url) {
-
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     webView.evaluateJavascript("document.getElementById(\"dataview-1069\").style.display = 'none'", null); //hide background buttons
                     webView.evaluateJavascript("document.getElementById('taskbar-1024').style.display = 'none'", null); // hide taskbar
                     webView.evaluateJavascript("document.getElementById(\"tool-1088\").style.display = 'none'", null); //hide head buttons
@@ -45,7 +46,9 @@ public class messages extends Fragment {
                     webView.evaluateJavascript("document.getElementById(\"tool-1090\").style.display = 'none'", null); // hide head button
                     //webView.evaluateJavascript("document.getElementById(\"toolbar-1084\").style=\"top: 580px;\";", null); // show add button
                     //webView.evaluateJavascript("document.getElementById(\"messaging\").style=\"top: 50px; left:0px;\";", null);//move window to up(now not work)
+                    }
                     super.onPageFinished(view, url);
+
                 }
             });
             switch (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) {
