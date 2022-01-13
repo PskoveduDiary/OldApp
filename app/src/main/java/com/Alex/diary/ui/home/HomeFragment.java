@@ -2,26 +2,22 @@ package com.Alex.diary.ui.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 
 import androidx.fragment.app.Fragment;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
-import com.Alex.diary.MainActivity;
 import com.Alex.diary.R;
 import com.Alex.diary.XLSParser;
+import com.Alex.diary.XLSParserItog;
 
 
 public class HomeFragment extends Fragment {
@@ -63,6 +59,13 @@ public class HomeFragment extends Fragment {
                     switchActivityIntent.putExtra("djhjgfj", url); //too like obfuscation
                     startActivity(switchActivityIntent);
             }
+            @Override
+            public void DownloadItog(String url){
+                    Intent switchActivityIntent = new Intent(contextt, XLSParserItog.class);
+                    switchActivityIntent.putExtra("gfjxsasd", cookies); //like obfuscation
+                    switchActivityIntent.putExtra("djhjgfj", url); //too like obfuscation
+                    startActivity(switchActivityIntent);
+            }
         });
         webView.setWebChromeClient(new MyWebChromeClient());
         diary = "https://one.pskovedu.ru/edv/index/participant";
@@ -89,19 +92,5 @@ public class HomeFragment extends Fragment {
                 webView.loadUrl(diary);//Return to diary
             }
         }, 1500); //specify the number of milliseconds
-    }
-}
-final class MyWebChromeClient extends WebChromeClient {
-    @Override
-    public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
-        Log.d("LogTag", message);
-        result.confirm();
-        SharedPreferences sharedPref = new MainActivity().getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("PrivateID", message);
-        editor.apply();
-
-        Log.d("prefs", message);
-        return true;
     }
 }

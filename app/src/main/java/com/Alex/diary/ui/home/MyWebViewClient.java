@@ -53,6 +53,7 @@ public class MyWebViewClient extends WebViewClient {
         }
         else{
             if (request.getUrl().toString().contains("marks")) Download(request.getUrl().toString());
+            if (request.getUrl().toString().contains("report/period")) DownloadItog(request.getUrl().toString());
             view.loadUrl(request.getUrl().toString());
         }
 
@@ -101,9 +102,11 @@ public class MyWebViewClient extends WebViewClient {
         }
         else{
             if (url.contains("marks")) Download(url);
+            if (url.contains("report/period")) DownloadItog(url);
             view.loadUrl(url);
         }
         return true;
     }
     public void Download(String url){}
+    public void DownloadItog(String url){}
 }

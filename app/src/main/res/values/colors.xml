@@ -5,5 +5,9 @@
     <color name="colorAccent">#FDD835</color>
     <color name="backgroundWhite">#CACACA</color>
     <color name="backgroundBlack">#515151</color>
+    <color name="Five">#00B7FF</color>
+    <color name="Four">#00FF19</color>
+    <color name="Three">#FFB700</color>
+    <color name="Two">#FF0000</color>
     <color name="colorGrey" />
 </resources>

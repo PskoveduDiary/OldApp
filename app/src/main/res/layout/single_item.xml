@@ -4,14 +4,8 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="13dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_launcher_background" />
-
     <LinearLayout
-        android:layout_width="315dp"
+        android:layout_width="282dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -19,14 +13,14 @@
             android:id="@+id/textView1"
             android:layout_width="307dp"
             android:layout_height="wrap_content"
-            android:text="Томасина"
+            android:text="Тестовый очень длинный предмет"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="305dp"
             android:layout_height="wrap_content"
-            android:text="5 5 5 5 5"
+            android:text="5 5 5 5 5 5 5 5 5 5  5 5 5 5 "
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -36,8 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_weight="1"
-        android:text="5"
-        android:textAlignment="center"
+        android:text="5.00"
+        android:textAlignment="textEnd"
         android:textSize="24sp" />
 
 </LinearLayout>

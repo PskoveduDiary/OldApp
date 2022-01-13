@@ -22,7 +22,7 @@
                 android:resource="@xml/file_path"/>
         </provider>
         <activity
-            android:name=".MainActivity"
+            android:name="com.Alex.diary.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
 
@@ -33,12 +33,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PurshaseCore"
+            android:name="com.Alex.diary.PurshaseCore"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
-            android:name=".XLSParser"
+            android:name="com.Alex.diary.XLSParser"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name="com.Alex.diary.XLSParserItog"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

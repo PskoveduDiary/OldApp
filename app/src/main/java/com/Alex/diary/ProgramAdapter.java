@@ -1,5 +1,6 @@
 package com.Alex.diary;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class ProgramAdapter extends ArrayAdapter<String> {
     }
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         // The parameter convertView is null when your app is creating a new item for the first time. It's not null when
@@ -57,6 +59,10 @@ public class ProgramAdapter extends ArrayAdapter<String> {
 
         holder.Items.setText(Items.get(position));
         holder.Vypiska.setText(Vypiska.get(position));
+        if (Itog.get(position).startsWith("5")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Five));
+        if (Itog.get(position).startsWith("4")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Four));
+        if (Itog.get(position).startsWith("3")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Three));
+        if (Itog.get(position).startsWith("2")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Two));
         holder.Itog.setText(Itog.get(position));
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override

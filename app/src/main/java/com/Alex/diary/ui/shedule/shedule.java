@@ -15,8 +15,6 @@ import androidx.webkit.WebViewFeature;
 import com.Alex.diary.R;
 import com.Alex.diary.ui.home.MyWebViewClient;
 
-
-import android.webkit.WebView;
 public class shedule extends Fragment {
         public static WebView webView;
         public  View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
