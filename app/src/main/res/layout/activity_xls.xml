@@ -8,13 +8,14 @@ android:layout_height="match_parent"
 android:fitsSystemWindows="true"
 tools:openDrawer="start">
 
-    <ListView
-        android:id="@+id/list"
+    <fragment
+        android:id="@+id/fragmentXLS"
+        android:name="com.Alex.diary.ui.all_marks.MarksAllFragment"
+        android:tag="XLSFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

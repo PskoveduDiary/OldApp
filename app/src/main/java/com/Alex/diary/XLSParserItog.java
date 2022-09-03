@@ -1,3 +1,6 @@
+/**
+ * This class is used to read the Excel file and convert it to a list of lists
+ */
 package com.Alex.diary;
 
 import android.annotation.SuppressLint;
@@ -29,7 +32,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +70,8 @@ public class XLSParserItog extends AppCompatActivity {
 
 
     }
+    // Checking if the user has granted permission to download files. If not, it will ask for
+    // permission.
     private void checkDownloadPermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             Toast.makeText(this, "Нет, разрешения на загрузку файлов!", Toast.LENGTH_LONG).show();
@@ -91,6 +95,11 @@ public class XLSParserItog extends AppCompatActivity {
             }
         }
     };
+    /**
+     * Find the file that was downloaded by the downloadId and open it
+     *
+     * @param downloadId The ID of the download.
+     */
     private void FindFile(final long downloadId) {
         DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
@@ -111,6 +120,11 @@ public class XLSParserItog extends AppCompatActivity {
         if (file!=null) file.delete();
         //Log.d("Moving", String.valueOf(succes));
     }
+    /**
+     * Reads the Excel file and returns a list of lists of strings
+     *
+     * @param file The file that you want to open.
+     */
     private void openDownloadedExcel(File file){
         if(file!=null) {
                 Items = ExcelUtilsItog.readExcel(file);
@@ -124,11 +138,14 @@ public class XLSParserItog extends AppCompatActivity {
 }
 class ExcelUtilsItog {
 
+
     /**
-     * Read Excel File
-     * @param file
-     * @throws FileNotFoundException
-     * @return
+     * Reads the contents of a file and returns a list of lists
+     *
+     * @param file The file to be read.
+     * @return A list of lists. The first list is the list of items, the second list is the list of
+     * first choices, the third list is the list of second choices, the fourth list is the list of
+     * third choices, and the fifth list is the list of fourth choices.
      */
     public static List<List> readExcel(File file){
         if(file == null) {

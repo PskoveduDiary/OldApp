@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.CookieManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.webkit.WebSettingsCompat;
@@ -24,7 +27,7 @@ public class HomeFragment extends Fragment {
     public static WebView webView;
     public static String diary;
     public static String Url;
-    static String cookies;
+    public static String cookies;
     static Context contextt;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
@@ -48,8 +51,9 @@ public class HomeFragment extends Fragment {
                 cookies = CookieManager.getInstance().getCookie(url);
                 // save cookies or call new fun to handle actions
                 //  newCookies(cookies);
-                //webView.loadUrl("javascript:alert(DataControl.getGuid())");
-
+                //webView.loadUrl("javascript:document.getElementById(\"export-diary\").remove();");
+                //webView.loadUrl("javascript:AndroidFunction.saveUID(DataControl.getGuid());");
+//for (i=0; i<document.querySelectorAll("div.marks > [style = 'color: green']").length; i++) document.querySelectorAll("div.marks > [style = 'color: green']")[i].textContent = "85"
             }
 
             @Override
@@ -68,6 +72,8 @@ public class HomeFragment extends Fragment {
             }
         });
         webView.setWebChromeClient(new MyWebChromeClient());
+
+        //webView.addJavascriptInterface(new JavaScriptInterface(contextt), "AndroidFunction");
         diary = "https://one.pskovedu.ru/edv/index/participant";
 
         webView.loadUrl(diary); //load Diary
@@ -92,5 +98,18 @@ public class HomeFragment extends Fragment {
                 webView.loadUrl(diary);//Return to diary
             }
         }, 1500); //specify the number of milliseconds
+    }
+}
+class JavaScriptInterface {
+    Context mContext;
+
+    JavaScriptInterface(Context c) {
+        mContext = c;
+    }
+
+    @JavascriptInterface
+    public void saveUID(String toast) {
+        Toast.makeText(mContext, toast, Toast.LENGTH_SHORT).show();
+        Log.d("Log", toast);
     }
 }

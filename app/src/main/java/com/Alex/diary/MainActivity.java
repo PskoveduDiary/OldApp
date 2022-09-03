@@ -1,9 +1,7 @@
 package com.Alex.diary;
 
 import android.app.DownloadManager;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -12,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -52,10 +49,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
         //getSupportActionBar().hide();
-        messagesUnread = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().findItem(R.id.nav_messages));
-        messagesUnread.setGravity(Gravity.CENTER_VERTICAL);
-        messagesUnread.setTypeface(null, Typeface.BOLD);
-        messagesUnread.setText("");
+        //messagesUnread = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
+                //findItem(R.id.nav_messages));
+        //messagesUnread.setGravity(Gravity.CENTER_VERTICAL);
+       //messagesUnread.setTypeface(null, Typeface.BOLD);
+        //messagesUnread.setTextColor(getResources().getColor(R.color.colorAccent));
+        //messagesUnread.setText("99+");
     }
 
     public void onBackPressed() {

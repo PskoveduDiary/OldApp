@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -14,9 +13,10 @@ public class ProgramAdapter extends ArrayAdapter<String> {
     Context context;
     List<String> Items;
     List<String> Vypiska;
-    List<String> Itog;
+    List<Double> Itog;
 
-    public ProgramAdapter(Context context, List<String> Items, List<String> Vypiska, List<String> Itog) {
+    // This is the constructor of the class. It's called when you create an object of the class.
+    public ProgramAdapter(Context context, List<String> Items, List<String> Vypiska, List<Double> Itog) {
         super(context, R.layout.single_item, R.id.textView1, Items);
         this.context = context;
         this.Items = Items;
@@ -25,6 +25,16 @@ public class ProgramAdapter extends ArrayAdapter<String> {
     }
 
 
+    /**
+     * When you're creating a new item, you'll inflate the layout and initialize the ViewHolder.
+     * When you're recycling, you'll get the ViewHolder from the singleItem
+     *
+     * @param position The position of the item in the list.
+     * @param convertView The view that you want to reuse.
+     * @param parent The ViewGroup object that contains the list view.
+     * @return The View object that is being returned is a View object that is created by the getView()
+     * method.
+     */
     @SuppressLint("ResourceAsColor")
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -59,17 +69,16 @@ public class ProgramAdapter extends ArrayAdapter<String> {
 
         holder.Items.setText(Items.get(position));
         holder.Vypiska.setText(Vypiska.get(position));
-        if (Itog.get(position).startsWith("5")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Five));
-        if (Itog.get(position).startsWith("4")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Four));
-        if (Itog.get(position).startsWith("3")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Three));
-        if (Itog.get(position).startsWith("2")) holder.Itog.setTextColor(context.getResources().getColor(R.color.Two));
-        holder.Itog.setText(Itog.get(position));
+        if (Itog.get(position) >= 4.5) holder.Itog.setTextColor(context.getResources().getColor(R.color.Five));
+        else if (Itog.get(position) >= 3.5) holder.Itog.setTextColor(context.getResources().getColor(R.color.Four));
+        else if (Itog.get(position) >= 2.5) holder.Itog.setTextColor(context.getResources().getColor(R.color.Three));
+        else if (Itog.get(position) >= 1.5) holder.Itog.setTextColor(context.getResources().getColor(R.color.Two));
+        else holder.Itog.setTextColor(context.getResources().getColor(android.R.color.tab_indicator_text));
+        holder.Itog.setText(Itog.get(position).toString());
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked:"+ Items.get(position), Toast.LENGTH_SHORT).show();
-                //Intent openLinksIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urls[position]));
-                //context.startActivity(openLinksIntent);
+                XLSParser.OpenInfo(position);
             }
         });
         return singleItem;

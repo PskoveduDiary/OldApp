@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -65,33 +65,37 @@ public class ProgramAdapterItog extends ArrayAdapter<String> {
 
         holder.ItemsItog.setText(Items.get(position));
         holder.I.setText(I.get(position));
-        if (I.get(position).startsWith("5")) holder.I.setTextColor(context.getResources().getColor(R.color.Five));
-        if (I.get(position).startsWith("4")) holder.I.setTextColor(context.getResources().getColor(R.color.Four));
-        if (I.get(position).startsWith("3")) holder.I.setTextColor(context.getResources().getColor(R.color.Three));
-        if (I.get(position).startsWith("2")) holder.I.setTextColor(context.getResources().getColor(R.color.Two));
         holder.II.setText(II.get(position));
-        if (II.get(position).startsWith("5")) holder.II.setTextColor(context.getResources().getColor(R.color.Five));
-        if (II.get(position).startsWith("4")) holder.II.setTextColor(context.getResources().getColor(R.color.Four));
-        if (II.get(position).startsWith("3")) holder.II.setTextColor(context.getResources().getColor(R.color.Three));
-        if (II.get(position).startsWith("2")) holder.II.setTextColor(context.getResources().getColor(R.color.Two));
         holder.III.setText(III.get(position));
-        if (III.get(position).startsWith("5")) holder.III.setTextColor(context.getResources().getColor(R.color.Five));
-        if (III.get(position).startsWith("4")) holder.III.setTextColor(context.getResources().getColor(R.color.Four));
-        if (III.get(position).startsWith("3")) holder.III.setTextColor(context.getResources().getColor(R.color.Three));
-        if (III.get(position).startsWith("2")) holder.III.setTextColor(context.getResources().getColor(R.color.Two));
         holder.IV.setText(IV.get(position));
-        if (IV.get(position).startsWith("5")) holder.IV.setTextColor(context.getResources().getColor(R.color.Five));
-        if (IV.get(position).startsWith("4")) holder.IV.setTextColor(context.getResources().getColor(R.color.Four));
-        if (IV.get(position).startsWith("3")) holder.IV.setTextColor(context.getResources().getColor(R.color.Three));
-        if (IV.get(position).startsWith("2")) holder.IV.setTextColor(context.getResources().getColor(R.color.Two));
+
+        getColor(I, holder.I, position);
+        getColor(II, holder.II, position);
+        getColor(III, holder.III, position);
+        getColor(IV, holder.IV, position);
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked:"+ Items.get(position), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), "You clicked:"+ Items.get(position), Toast.LENGTH_SHORT).show();
                 //Intent openLinksIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urls[position]));
                 //context.startActivity(openLinksIntent);
             }
         });
         return singleItem;
+    }
+    /**
+     * Given a list of strings, a textview, and an index, set the textview's text to the string at the
+     * index, and set the textview's color to the appropriate color based on the string
+     *
+     * @param ListStrings The list of strings that you want to color.
+     * @param tw The TextView that you want to change the color of.
+     * @param pos The position of the item in the list.
+     */
+    public void getColor(List<String> ListStrings, TextView tw, int pos){
+        if (ListStrings.get(pos).startsWith("5")) tw.setTextColor(context.getResources().getColor(R.color.Five));
+        else if (ListStrings.get(pos).startsWith("4")) tw.setTextColor(context.getResources().getColor(R.color.Four));
+        else if (ListStrings.get(pos).startsWith("3")) tw.setTextColor(context.getResources().getColor(R.color.Three));
+        else if (ListStrings.get(pos).startsWith("2")) tw.setTextColor(context.getResources().getColor(R.color.Two));
+        else tw.setTextColor(context.getResources().getColor(android.R.color.tab_indicator_text));
     }
 }
