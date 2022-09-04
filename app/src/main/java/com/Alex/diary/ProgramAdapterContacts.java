@@ -12,14 +12,16 @@ import java.util.List;
 
 public class ProgramAdapterContacts extends ArrayAdapter<String> {
     Context context;
+    List<String> Logins;
     List<String> Names;
     List<Integer> Unreaded;
     List<Boolean> isGroup;
 
     // This is the constructor of the class. It's called when you create an object of the class.
-    public ProgramAdapterContacts(Context context, List<String> Names, List<Integer> Unreaded, List<Boolean> isGroup) {
+    public ProgramAdapterContacts(Context context, List<String> Logins, List<String> Names, List<Integer> Unreaded, List<Boolean> isGroup) {
         super(context, R.layout.single_item, R.id.textView1, Names);
         this.context = context;
+        this.Logins = Logins;
         this.Names = Names;
         this.Unreaded = Unreaded;
         this.isGroup = isGroup;
@@ -76,7 +78,7 @@ public class ProgramAdapterContacts extends ArrayAdapter<String> {
         singleItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "You clicked:"+ Names.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "You clicked:"+ Logins.get(position), Toast.LENGTH_SHORT).show();
                 //Intent openLinksIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(urls[position]));
                 //context.startActivity(openLinksIntent);
             }

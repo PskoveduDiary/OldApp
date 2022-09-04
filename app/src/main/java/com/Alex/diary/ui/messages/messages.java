@@ -168,9 +168,9 @@ public class messages extends Fragment implements API.MyCallback {
         }
 
     @Override
-    public void Contacts(List<String> names, List<Integer> unreaded, List<Boolean> isGroup) {
+    public void Contacts(List<String> logins, List<String> names, List<Integer> unreaded, List<Boolean> isGroup) {
             ListView listView = view.findViewById(R.id.ContactsList);
-            ProgramAdapterContacts adapter = new ProgramAdapterContacts(this.getContext(), names, unreaded, isGroup);
+            ProgramAdapterContacts adapter = new ProgramAdapterContacts(this.getContext(), logins, names, unreaded, isGroup);
             listView.setAdapter(adapter);
         }
 }

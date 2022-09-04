@@ -17,7 +17,7 @@ import org.json.*;
 
 public class API {
     public interface MyCallback {
-        void Contacts(List<String> names, List<Integer> unreaded, List<Boolean> isGroup);
+        void Contacts(List<String> logins, List<String> names, List<Integer> unreaded, List<Boolean> isGroup);
     }
     public void GetCotacts(MyCallback callback){
         String dict = "{'action':'X1API'," +
@@ -35,6 +35,7 @@ public class API {
                     public void onResponse(@NonNull Call<ResponseBody> call, @NonNull Response<ResponseBody> response) {
                         ResponseBody message = response.body();
                         try {
+                            List<String> logins = new ArrayList<String>();
                             List<String> names = new ArrayList<String>();
                             List<Integer> unread = new ArrayList<Integer>();
                             List<Boolean> group = new ArrayList<Boolean>();
@@ -43,14 +44,13 @@ public class API {
                             JSONArray arr = obj.getJSONArray("data");
                             for (int i = 0; i < arr.length(); i++)
                             {
+                                logins.add(arr.getJSONObject(i).getString("LOGIN"));
                                 names.add(arr.getJSONObject(i).getString("NAME"));
                                 unread.add(arr.getJSONObject(i).getInt("UNREAD"));
                                 try {group.add(arr.getJSONObject(i).getBoolean("IS_GROUP"));}
                                 catch (org.json.JSONException Exception) { group.add(false); }
                             }
-                            Log.d("value", String.valueOf(names));
-                            Log.d("value", String.valueOf(unread));
-                            callback.Contacts(names, unread, group);
+                            callback.Contacts(logins, names, unread, group);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

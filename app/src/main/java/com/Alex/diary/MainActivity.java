@@ -1,6 +1,8 @@
 package com.Alex.diary;
 
+import android.app.ActionBar;
 import android.app.DownloadManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -78,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (id == R.id.action_Logout) {
                 navController.navigate(R.id.nav_home);
                 HomeFragment.Logout();
+            }
+            if (id == R.id.nav_messages){
+                Intent intent = new Intent(this, MessageActivity.class);
+                startActivity(intent);
             }
             else navController.navigate(id);
 
