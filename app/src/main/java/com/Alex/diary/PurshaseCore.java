@@ -39,7 +39,7 @@ public class PurshaseCore extends Activity {
     private static final String SUBSCRIPTION_LIFE = "premiumlife";
     private static final String SUBSCRIPTION_YEAR = "premiumyear";
     private static final String SUBSCRIPTION_MONTH = "premium";
-    private static final String LICENSE_KEY = Constants.base64EncodedPublicKey; // PUT YOUR MERCHANT KEY HERE;
+    private static final String LICENSE_KEY = "Constants.base64EncodedPublicKey"; // PUT YOUR MERCHANT KEY HERE;
     // put your Google merchant id here (as stated in public profile of your Payments Merchant Center)
     // if filled library will provide protection against Freedom alike Play Market simulators
     private static final String MERCHANT_ID="17018323048163187791";

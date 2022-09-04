@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -17,12 +18,17 @@ import androidx.fragment.app.Fragment;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
+import com.Alex.diary.API;
 import com.Alex.diary.MessageService;
+import com.Alex.diary.ProgramAdapter;
+import com.Alex.diary.ProgramAdapterContacts;
 import com.Alex.diary.PurshaseCore;
 import com.Alex.diary.R;
+import com.Alex.diary.XLSParser;
 import com.Alex.diary.ui.home.MyWebViewClient;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -31,18 +37,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class messages extends Fragment {
+public class messages extends Fragment implements API.MyCallback {
         public PurshaseCore pc = new PurshaseCore();
         public static WebView webView;
+        API api;
+        static List<List> All;
+        static View view;
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         public  View onCreateView(LayoutInflater inflater, ViewGroup vg, Bundle data) {
-
+            api = new API();
+            view = inflater.inflate(R.layout.fragment_messages, vg, false);
             /*if(!pc.Check(this.getContext()) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
                 Intent intent = new Intent(getActivity(), PurshaseCore.class);
                 startActivity(intent);
-            }*/
-            View view = inflater.inflate(R.layout.fragment_messages, vg, false);
+            }
             webView = (WebView) view.findViewById(R.id.webViewMsg);
             webView.setWebViewClient(new MyWebViewClient() {
                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -80,7 +89,7 @@ public class messages extends Fragment {
                             " bridge.onAnnotations(json);" +
                             "} else {" +
                             "  bridge.onAnnotations(\"Ошибка HTTP: \" + response.status)" +
-                            "} })();", null);*/
+                            "} })();", null);
                     super.onPageFinished(view, url);
 
                 }
@@ -123,14 +132,13 @@ public class messages extends Fragment {
             webView.getSettings().setUserAgentString("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36");
             webView.getSettings().setJavaScriptEnabled(true);
             webView.addJavascriptInterface(this, "bridge");
-            webView.loadUrl("https://one.pskovedu.ru/#messaging");
-
-            //webView.setVisibility(View.GONE);
-            //              KEEP
-            //document.getElementById("messaging").style="width: 1090px; height: 907px; left: 0px; top: 30px; z-index: 19011";
-            //document.getElementById("taskbar-1024").style.display = 'none'
-            //document.getElementById("ext-gen1180").style.display = 'none'
-            //document.getElementById("messaging_header").style.display = 'none'
+            webView.loadUrl("https://one.pskovedu.ru/#messaging")
+            webView.setVisibility(View.GONE);
+                          KEEP
+            document.getElementById("messaging").style="width: 1090px; height: 907px; left: 0px; top: 30px; z-index: 19011";
+            document.getElementById("taskbar-1024").style.display = 'none'
+            document.getElementById("ext-gen1180").style.display = 'none'
+            document.getElementById("messaging_header").style.display = 'none'
             String b = "{\"action\":\"X1API\",\"method\":\"direct\",\"data\":[{\"service\":\"messaging\",\"method\":\"getMessages\",\"params\":{\"user\":\"1B120E187EA450E1E1C2877F679EE1EB\",\"isGroup\":\"\",\"lastTimestamp\":1662151845661},\"ctx\":{}}],\"type\":\"rpc\",\"tid\":36}";
             RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(b));
             MessageService.getInstance()
@@ -153,11 +161,16 @@ public class messages extends Fragment {
                             Log.d("log", "Error occurred while getting request!");
                             t.printStackTrace();
                         }
-                    });
+                    });*/
+
+            api.GetCotacts(this);
             return view;
         }
-        @JavascriptInterface
-    public void onAnnotations(String result) {
-        Log.d("log", result);
-    }
+
+    @Override
+    public void Contacts(List<String> names, List<Integer> unreaded, List<Boolean> isGroup) {
+            ListView listView = view.findViewById(R.id.ContactsList);
+            ProgramAdapterContacts adapter = new ProgramAdapterContacts(this.getContext(), names, unreaded, isGroup);
+            listView.setAdapter(adapter);
+        }
 }

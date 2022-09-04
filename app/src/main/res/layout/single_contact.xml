@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_weight="0"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="100dp"
+            android:layout_height="51dp"
+            android:layout_weight="0"
+            android:gravity="center"
+            tools:srcCompat="@drawable/user" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contact_name"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_weight="1"
+        android:gravity="start|center_vertical"
+        android:text="Сергеева С. А"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/unreadedM"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.2"
+        android:text="1"
+        android:textColor="@color/Two"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>

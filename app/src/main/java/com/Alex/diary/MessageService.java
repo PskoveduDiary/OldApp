@@ -8,6 +8,7 @@ import java.util.List;
 import okhttp3.Cookie;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -18,18 +19,18 @@ public class MessageService {
     private List<Cookie> cookies;
 
     private MessageService() {
-        //HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
 // set your desired log level
-        //logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(chain -> {
                     final Request original = chain.request();
                     final Request authorized = original.newBuilder()
-                            .addHeader("Cookie", "_ym_uid=1662142800682136986; _ym_d=1662142800; _ym_isad=2; PHPSESSID=02f85a561b3f9dfafa85e4ae664b75cd; X1_SSO=6312731f8602d815033b3012")
+                            .addHeader("Cookie", "PHPSESSID=51ff092a85a29a5fb7ba5afc6aebfd81; _ym_uid=1662281660406719927; _ym_d=1662281660; _ym_isad=1; X1_SSO=631468468602d815033b46ab")
                             .build();
                     return chain.proceed(authorized);
                 })
-                //.addInterceptor(logging)
+                .addInterceptor(logging)
                 .build();
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
